@@ -5,7 +5,7 @@
 ## Prerequisites
 
 - [Java 22+](https://www.oracle.com/java/technologies/downloads/#java23) installed
-- [PostgreSQl 16+](https://www.postgresql.org/download/) installed
+- [PostgreSQL 16+](https://www.postgresql.org/download/) installed
 
 ## Steps to run the application
 
@@ -24,16 +24,16 @@
 
 2. Set the following environment variables with their corresponding values:
     
-| Key                          | Description                                                                       |
-|------------------------------|-----------------------------------------------------------------------------------|
-| SHC_SECURITY_KEY             | A secure key that will be used to sign and verify security tokens.                |
-| SHC_ADMIN_USERNAME           | The username of the admin which will be created on application startup.           |
-| SHC_ADMIN_PASSWORD           | The password of the admin which will be created on application startup.           |
-| SHC_DATASOURCE_URL           | Your database url (e.g. 'localhost:5432').                                        |
-| SHC_DATASOURCE_USERNAME      | Your database username.                                                           |
-| SHC_DATASOURCE_PASSWORD      | Your database password.                                                           |
-| SHC_DATASOURCE_DATABASE_NAME | The name of the existing PostgreSQL database where you want to create the tables. |
-| SHC_DATASOURCE_SCHEMA        | The schema name in the database where you want to create the tables.              | 
+| Key                          | Description                                                                                                                    | Default Value         |
+|------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| SHC_SECURITY_KEY             | A secure key (minimum length: 32 characters, encoded in Base64 format) that will be used to sign and verify security tokens.   | None                  |
+| SHC_ADMIN_USERNAME           | The username of the admin which will be created on application startup.                                                        | None                  |
+| SHC_ADMIN_PASSWORD           | The password of the admin which will be created on application startup.                                                        | None                  |
+| SHC_DATASOURCE_URL           | Your database url (e.g. 'localhost:5432').                                                                                     | 'localhost:5432'      |
+| SHC_DATASOURCE_USERNAME      | Your database username.                                                                                                        | None                  |
+| SHC_DATASOURCE_PASSWORD      | Your database password.                                                                                                        | None                  |
+| SHC_DATASOURCE_DATABASE_NAME | The name of the existing PostgreSQL database where you want to create the tables.                                              | 'second_hand_clothes' |
+| SHC_DATASOURCE_SCHEMA        | The schema name in the database where you want to create the tables.                                                           | 'second_hand_clothes' |
 
    Learn more about setting environment variables on different OSs [here](https://www3.ntu.edu.sg/home/ehchua/programming/howto/Environment_Variables.html).
 

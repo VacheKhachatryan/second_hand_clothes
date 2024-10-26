@@ -1,11 +1,11 @@
 application:
   security:
-    secretKey: ${SHC_SECURITY_KEY:secret_key}
+    secretKey: ${SHC_SECURITY_KEY}
     accessTokenExpiration: 120000 # 2 minutes
     refreshTokenExpiration: 604800000 # 1 week
     admin:
-      username: ${SHC_ADMIN_USERNAME:admin}
-      password: ${SHC_PASSWORD_PASSWORD:admin}
+      username: ${SHC_ADMIN_USERNAME}
+      password: ${SHC_PASSWORD_PASSWORD}
     permittedUris:
       post:
         - "/api/v1/users"
@@ -32,8 +32,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://${SHC_DATASOURCE_URL:localhost:5432}/${SHC_DATASOURCE_DATABASE_NAME:second_hand_clothes}?currentSchema=${spring.flyway.schemas}
-    username: ${SHC_DATASOURCE_USERNAME:postgres}
-    password: ${SHC_DATASOURCE_PASSWORD:root}
+    username: ${SHC_DATASOURCE_USERNAME}
+    password: ${SHC_DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: validate
