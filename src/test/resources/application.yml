@@ -1,0 +1,23 @@
+application:
+  security:
+    secretKey: secret_key
+    accessTokenExpiration: 120000 # 2 minutes
+    refreshTokenExpiration: 604800000 # 1 week
+    admin:
+      username: admin
+      password: admin
+    permittedUris:
+      post:
+        - "/api/v1/users"
+        - "/api/v1/users/**"
+      get:
+        - ${springdoc.api-docs.path}
+        - ${springdoc.api-docs.path}/**
+        - ${springdoc.swagger-ui.path}
+        - ${springdoc.swagger-ui.path}/**
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:second_hands_clothes
+    username: sa
+    password: password

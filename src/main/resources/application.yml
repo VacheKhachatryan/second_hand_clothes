@@ -1,0 +1,39 @@
+application:
+  security:
+    secretKey: ${SHC_SECURITY_KEY:secret_key}
+    accessTokenExpiration: 120000 # 2 minutes
+    refreshTokenExpiration: 604800000 # 1 week
+    admin:
+      username: ${SHC_ADMIN_USERNAME:admin}
+      password: ${SHC_PASSWORD_PASSWORD:admin}
+    permittedUris:
+      post:
+        - "/api/v1/users"
+        - "/api/v1/users/**"
+      get:
+        - ${springdoc.api-docs.path}
+        - ${springdoc.api-docs.path}/**
+        - ${springdoc.swagger-ui.path}
+        - ${springdoc.swagger-ui.path}/**
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui
+    disable-swagger-default-url: true
+spring:
+  application:
+    name: second-hand-clothes
+  flyway:
+    locations: classpath:/db/migration
+    schemas: ${SHC_DATASOURCE_SCHEMA:second_hand_clothes}
+    baselineOnMigrate: true
+    enabled: true
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${SHC_DATASOURCE_URL}/${SHC_DATASOURCE_DATABASE_NAME:second_hand_clothes}?currentSchema=${spring.flyway.schemas}
+    username: ${SHC_DATASOURCE_USERNAME:postgres}
+    password: ${SHC_DATASOURCE_PASSWORD:root}
+  jpa:
+    hibernate:
+      ddl-auto: validate
