@@ -45,7 +45,7 @@
     ```
    On Windows:
    ```bash
-    mwnw.cmd clean install clean install
+    mwnw.cmd clean install
    ```
 
 4. Run the JAR using the following command:
