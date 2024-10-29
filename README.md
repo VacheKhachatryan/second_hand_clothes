@@ -56,7 +56,7 @@
 
 ## Documentation
 
-   To access the API documentation, visit this URL:
+   To access the API documentation, visit this URI:
 
    ```http request 
       GET /swagger-ui/index.html
