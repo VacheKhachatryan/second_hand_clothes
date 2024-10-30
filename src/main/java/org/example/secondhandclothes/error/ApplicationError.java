@@ -26,7 +26,6 @@ public enum ApplicationError {
   ACCESS_TOKEN_IS_EXPIRED(4015, UNAUTHORIZED, "Access token is expired."),
   INVALID_ACCESS_TOKEN(4016, UNAUTHORIZED, "Invalid access token."),
 
-
   // 403, Forbidden
   ACCESS_DENIED(4031, FORBIDDEN, "User don't have enough permissions to access this resource."),
 
@@ -39,6 +38,10 @@ public enum ApplicationError {
   USER_ALREADY_EXISTS_WITH_EMAIL(4091, CONFLICT, "There is a user registered with such email."),
   GARMENT_CATEGORY_ALREADY_EXISTS_WITH_NAME(
       4092, CONFLICT, "There is a garment category registered with such name."),
+  GARMENT_CATEGORY_IS_IN_USE(
+      4093,
+      CONFLICT,
+      "There are garments created under this category. Consider deleting or modifying them first."),
 
   // 500, Internal
   INTERNAL_ERROR(5001, INTERNAL_SERVER_ERROR, "Something went wrong, please try later.");

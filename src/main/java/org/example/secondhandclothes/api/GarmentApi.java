@@ -23,8 +23,7 @@ public interface GarmentApi {
 
   @Operation(
       summary = "Find garments",
-      description = " Find garments paginated and with filter.",
-      security = @SecurityRequirement(name = "auth"))
+      description = " Find garments paginated and with filter.")
   @ApiResponse(
       responseCode = "201",
       description = "Garments are returned.",

@@ -28,4 +28,6 @@ public class ErrorMessage {
       "User with email: %s don't have enough permissions to access this resource.";
   public static final String JSON_SERIALIZATION_FAILURE_MESSAGE =
       "Couldn't serialize the requested object due to an unexpected error.";
-}
+  public static final String GARMENT_CATEGORY_IN_USE_MESSAGE =
+      "The garment category can't be deleted as it has associated garments.";
+ }

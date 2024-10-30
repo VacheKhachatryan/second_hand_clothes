@@ -129,7 +129,7 @@ public class GarmentServiceImpl implements GarmentService {
     BooleanUtils.throwIfFalse(Objects.equals(user.getPublisherId(), Optional.ofNullable(garment.getPublisher())
                     .map(PublisherEntity::getId)
                     .orElse(null))
-            && ADMIN.equals(user.getRole()),
+            || ADMIN.equals(user.getRole()),
         () -> new AuthorizationException(ACCESS_DENIED, String.format(ACCESS_DENIED_MESSAGE, user.getEmail())));
   }
 

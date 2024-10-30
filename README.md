@@ -9,7 +9,7 @@
 
 ## Steps to run the application
 
-1. Create the database and schema in your PostgreSQL database by running these commands if you don't already have one for the application to store the data:
+1. Create a database and an empty schema in your PostgreSQL database by running these commands if you don't already have one for the application to store the data:
    ```sql
    -- Creates the database
    CREATE DATABASE database_name;

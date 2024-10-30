@@ -7,6 +7,7 @@ import org.example.secondhandclothes.dto.response.GarmentCategoryDto;
 import org.example.secondhandclothes.entity.GarmentCategoryEntity;
 import org.example.secondhandclothes.error.EntityAlreadyExistsException;
 import org.example.secondhandclothes.error.EntityNotFoundException;
+import org.example.secondhandclothes.error.OperationNotAllowedException;
 import org.example.secondhandclothes.mapper.GarmentCategoryMapper;
 import org.example.secondhandclothes.repository.GarmentCategoryRepository;
 import org.example.secondhandclothes.service.GarmentCategoryService;
@@ -19,9 +20,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.example.secondhandclothes.error.ApplicationError.*;
 import static org.example.secondhandclothes.error.ApplicationError.GARMENT_CATEGORY_ALREADY_EXISTS_WITH_NAME;
 import static org.example.secondhandclothes.error.ApplicationError.GARMENT_CATEGORY_NOT_FOUND;
 import static org.example.secondhandclothes.error.ErrorMessage.GARMENT_CATEGORY_EXISTS_MESSAGE;
+import static org.example.secondhandclothes.error.ErrorMessage.GARMENT_CATEGORY_IN_USE_MESSAGE;
 import static org.example.secondhandclothes.error.ErrorMessage.GARMENT_CATEGORY_NOT_FOUND_MESSAGE;
 
 @Service
@@ -64,7 +67,9 @@ public class GarmentCategoryServiceImpl implements GarmentCategoryService {
     log.debug("Attempt to delete a garment category with id: {}", id);
     GarmentCategoryEntity entity = repository.findById(id)
         .orElseThrow(() -> new EntityNotFoundException(GARMENT_CATEGORY_NOT_FOUND, String.format(GARMENT_CATEGORY_NOT_FOUND_MESSAGE, id)));
-
+    BooleanUtils.throwIfTrue(
+        repository.existsByCategoryIdWithGarments(entity.getId()),
+        () -> new OperationNotAllowedException(GARMENT_CATEGORY_IS_IN_USE, GARMENT_CATEGORY_IN_USE_MESSAGE));
     repository.delete(entity);
     log.info("Deleted garment category with id: {}", id);
   }
